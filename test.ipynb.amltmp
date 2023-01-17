@@ -1,0 +1,208 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "source": [
+        "print(\"Hello, world!\")"
+      ],
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": "Hello, world!\n"
+        }
+      ],
+      "execution_count": 1,
+      "metadata": {
+        "gather": {
+          "logged": 1673937633154
+        }
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(\"Hello, world!\")"
+      ],
+      "outputs": [],
+      "execution_count": null,
+      "metadata": {
+        "jupyter": {
+          "source_hidden": false,
+          "outputs_hidden": false
+        },
+        "nteract": {
+          "transient": {
+            "deleting": false
+          }
+        }
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!git clone https://github.com/TommyZihao/Train_Custom_Dataset.git"
+      ],
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": "Cloning into 'Train_Custom_Dataset'...\nremote: Enumerating objects: 1114, done.\u001b[K\nremote: Counting objects: 100% (260/260), done.\u001b[K\nremote: Compressing objects: 100% (114/114), done.\u001b[K\nremote: Total 1114 (delta 201), reused 177 (delta 146), pack-reused 854\u001b[K\nReceiving objects: 100% (1114/1114), 186.92 MiB | 42.68 MiB/s, done.\nResolving deltas: 100% (657/657), done.\nUpdating files: 100% (138/138), done.\n"
+        }
+      ],
+      "execution_count": 2,
+      "metadata": {
+        "jupyter": {
+          "source_hidden": false,
+          "outputs_hidden": false
+        },
+        "nteract": {
+          "transient": {
+            "deleting": false
+          }
+        }
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!rm -rf .git"
+      ],
+      "outputs": [],
+      "execution_count": 2,
+      "metadata": {
+        "jupyter": {
+          "source_hidden": false,
+          "outputs_hidden": false
+        },
+        "nteract": {
+          "transient": {
+            "deleting": false
+          }
+        }
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!ls -l -a"
+      ],
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": "total 9\r\ndrwxrwxrwx 2 root root    0 Jan 17 06:40 .\r\ndrwxrwxrwx 2 root root    0 Jan 17 06:27 ..\r\n-rwxrwxrwx 1 root root  315 Jan 17 06:41 .amlignore\r\n-rwxrwxrwx 1 root root  315 Jan 17 06:41 .amlignore.amltmp\r\ndrwxrwxrwx 2 root root    0 Jan 17 06:49 .git\r\ndrwxrwxrwx 2 root root    0 Jan 17 06:49 .ipynb_aml_checkpoints\r\n-rwxrwxrwx 1 root root 2669 Jan 17 06:40 README.md\r\n-rwxrwxrwx 1 root root 4109 Jan 17 06:49 test.ipynb\r\ndrwxrwxrwx 2 root root    0 Jan 17 06:40 关键点检测\r\ndrwxrwxrwx 2 root root    0 Jan 17 06:40 图像分割\r\ndrwxrwxrwx 2 root root    0 Jan 17 06:40 图像分类\r\ndrwxrwxrwx 2 root root    0 Jan 17 06:40 目标检测\r\n"
+        }
+      ],
+      "execution_count": 5,
+      "metadata": {
+        "jupyter": {
+          "source_hidden": false,
+          "outputs_hidden": false
+        },
+        "nteract": {
+          "transient": {
+            "deleting": false
+          }
+        }
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!git init"
+      ],
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": "\u001b[33mhint: Using 'master' as the name for the initial branch. This default branch name\u001b[m\n\u001b[33mhint: is subject to change. To configure the initial branch name to use in all\u001b[m\n\u001b[33mhint: of your new repositories, which will suppress this warning, call:\u001b[m\n\u001b[33mhint: \u001b[m\n\u001b[33mhint: \tgit config --global init.defaultBranch <name>\u001b[m\n\u001b[33mhint: \u001b[m\n\u001b[33mhint: Names commonly chosen instead of 'master' are 'main', 'trunk' and\u001b[m\n\u001b[33mhint: 'development'. The just-created branch can be renamed via this command:\u001b[m\n\u001b[33mhint: \u001b[m\n\u001b[33mhint: \tgit branch -m <name>\u001b[m\nInitialized empty Git repository in /mnt/batch/tasks/shared/LS_root/mounts/clusters/whalepytorch/code/Users/buptst/Train_Custom_Dataset/.git/\n"
+        }
+      ],
+      "execution_count": 4,
+      "metadata": {
+        "jupyter": {
+          "source_hidden": false,
+          "outputs_hidden": false
+        },
+        "nteract": {
+          "transient": {
+            "deleting": false
+          }
+        }
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!git add .\r\n",
+        "!git commit -m \"first commit\""
+      ],
+      "outputs": [],
+      "execution_count": null,
+      "metadata": {
+        "jupyter": {
+          "source_hidden": false,
+          "outputs_hidden": false
+        },
+        "nteract": {
+          "transient": {
+            "deleting": false
+          }
+        }
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!git push -u origin main\r\n"
+      ],
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": "The authenticity of host 'github.com (140.82.113.3)' can't be established.\nECDSA key fingerprint is SHA256:p2QAMXNIC1TJYWeIOttrVc98/R1BUFWu3/LiyKgUfQM.\nAre you sure you want to continue connecting (yes/no/[fingerprint])? ^C\n"
+        }
+      ],
+      "execution_count": 13,
+      "metadata": {
+        "jupyter": {
+          "source_hidden": false,
+          "outputs_hidden": false
+        },
+        "nteract": {
+          "transient": {
+            "deleting": false
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python310-sdkv2",
+      "language": "python",
+      "display_name": "Python 3.10 - SDK V2"
+    },
+    "language_info": {
+      "name": "python",
+      "version": "3.10.6",
+      "mimetype": "text/x-python",
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "pygments_lexer": "ipython3",
+      "nbconvert_exporter": "python",
+      "file_extension": ".py"
+    },
+    "kernel_info": {
+      "name": "python310-sdkv2"
+    },
+    "nteract": {
+      "version": "nteract-front-end@1.0.0"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 2
+}
