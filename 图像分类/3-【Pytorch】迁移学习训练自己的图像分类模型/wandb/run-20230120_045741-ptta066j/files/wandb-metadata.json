@@ -1,0 +1,74 @@
+{
+    "os": "Linux-5.15.0-1022-azure-x86_64-with-glibc2.10",
+    "python": "3.8.5",
+    "heartbeatAt": "2023-01-20T04:57:44.381418",
+    "startedAt": "2023-01-20T04:57:41.089707",
+    "docker": null,
+    "cuda": null,
+    "args": null,
+    "state": "running",
+    "program": "Users/buptst/Train_Custom_Dataset/\u56fe\u50cf\u5206\u7c7b/3-\u3010Pytorch\u3011\u8fc1\u79fb\u5b66\u4e60\u8bad\u7ec3\u81ea\u5df1\u7684\u56fe\u50cf\u5206\u7c7b\u6a21\u578b/\u3010C2\u3011\u8fc1\u79fb\u5b66\u4e60\u5fae\u8c03\u8bad\u7ec3-\u8fdb\u9636\u7248.ipynb",
+    "root": "/mnt/batch/tasks/shared/LS_root/mounts/clusters/buptst1/code",
+    "git": {
+        "remote": "git@github.com:sorker/DataWhale_qing.git",
+        "commit": null
+    },
+    "email": null,
+    "host": "buptst1",
+    "username": "azureuser",
+    "executable": "/anaconda/envs/azureml_py38/bin/python",
+    "cpu_count": 6,
+    "cpu_count_logical": 6,
+    "cpu_freq": {
+        "current": 2596.993,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2596.993,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2596.993,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2596.993,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2596.993,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2596.993,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2596.993,
+            "min": 0.0,
+            "max": 0.0
+        }
+    ],
+    "disk": {
+        "total": 118.05400085449219,
+        "used": 50.211692810058594
+    },
+    "gpu": "Tesla M60",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "Tesla M60",
+            "memory_total": 8524136448
+        }
+    ],
+    "memory": {
+        "total": 54.9007568359375
+    }
+}
