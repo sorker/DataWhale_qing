@@ -11,3 +11,5 @@ checkpoint
 torch-cam
 *.npy
 *.csv
+pytorch-grad-cam
+*.mp4
