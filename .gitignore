@@ -5,3 +5,9 @@ fruit30_*
 venv
 .idea
 .ipynb_aml_checkpoints
+test_img
+output
+checkpoint
+torch-cam
+*.npy
+*.csv
