@@ -4,3 +4,6 @@ fruit17_*
 fruit30_*
 venv
 .idea
+*.csv
+*.npy
+checkpoint
