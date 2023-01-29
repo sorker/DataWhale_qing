@@ -1,0 +1,402 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# 安装配置环境\n",
+        "\n",
+        "安装配置 pytorch-grad-cam 环境\n",
+        "\n",
+        "同济子豪兄 https://space.bilibili.com/1900783\n",
+        "\n",
+        "代码运行云GPU平台：https://featurize.cn/?s=d7ce99f842414bfcaea5662a97581bd1\n",
+        "\n",
+        "2022-9-20"
+      ],
+      "metadata": {
+        "pycharm": {
+          "name": "#%% md\n"
+        }
+      },
+      "id": "5814bb11-8636-4b28-b31f-18cc87b8e8cf"
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## 安装两个代码包"
+      ],
+      "metadata": {
+        "pycharm": {
+          "name": "#%% md\n"
+        }
+      },
+      "id": "07c87ee2-5dbf-4f19-9e32-20c8445e2981"
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!pip install grad-cam torchcam"
+      ],
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": "Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple\nCollecting grad-cam\n  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/42/4d/f3b45824fa23f3e17ddc16f54a1dd966ce1f0722177f56fbf8d689b98752/grad-cam-1.4.5.tar.gz (7.8 MB)\n\u001b[K     |████████████████████████████████| 7.8 MB 86.7 MB/s eta 0:00:01\n\u001b[?25h  Installing build dependencies ... \u001b[?25ldone\n\u001b[?25h  Getting requirements to build wheel ... \u001b[?25ldone\n\u001b[?25h    Preparing wheel metadata ... \u001b[?25ldone\n\u001b[?25hCollecting torchcam\n  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/b4/47/6140c642058689095d15a2d0169263c87ea47a5c02b7264f60acfff88eb5/torchcam-0.3.2-py3-none-any.whl (28 kB)\nRequirement already satisfied: numpy in /environment/miniconda3/lib/python3.7/site-packages (from grad-cam) (1.21.4)\nRequirement already satisfied: matplotlib in /environment/miniconda3/lib/python3.7/site-packages (from grad-cam) (3.5.0)\nRequirement already satisfied: Pillow in /environment/miniconda3/lib/python3.7/site-packages (from grad-cam) (8.4.0)\nRequirement already satisfied: torch>=1.7.1 in /environment/miniconda3/lib/python3.7/site-packages (from grad-cam) (1.10.0+cu113)\nRequirement already satisfied: opencv-python in /environment/miniconda3/lib/python3.7/site-packages (from grad-cam) (4.5.4.60)\nRequirement already satisfied: scikit-learn in /environment/miniconda3/lib/python3.7/site-packages (from grad-cam) (1.0.1)\nRequirement already satisfied: tqdm in /environment/miniconda3/lib/python3.7/site-packages (from grad-cam) (4.61.2)\nCollecting ttach\n  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/8d/a3/ee48a184a185c1897c582c72240c2c8a0d0aeb5f8051a71d4e4cd930c52d/ttach-0.0.3-py3-none-any.whl (9.8 kB)\nRequirement already satisfied: torchvision>=0.8.2 in /environment/miniconda3/lib/python3.7/site-packages (from grad-cam) (0.11.1+cu113)\nRequirement already satisfied: typing-extensions in /environment/miniconda3/lib/python3.7/site-packages (from torch>=1.7.1->grad-cam) (4.0.1)\nRequirement already satisfied: pyparsing>=2.2.1 in /environment/miniconda3/lib/python3.7/site-packages (from matplotlib->grad-cam) (3.0.6)\nRequirement already satisfied: packaging>=20.0 in /environment/miniconda3/lib/python3.7/site-packages (from matplotlib->grad-cam) (21.3)\nRequirement already satisfied: setuptools-scm>=4 in /environment/miniconda3/lib/python3.7/site-packages (from matplotlib->grad-cam) (6.3.2)\nRequirement already satisfied: kiwisolver>=1.0.1 in /environment/miniconda3/lib/python3.7/site-packages (from matplotlib->grad-cam) (1.3.2)\nRequirement already satisfied: cycler>=0.10 in /environment/miniconda3/lib/python3.7/site-packages (from matplotlib->grad-cam) (0.11.0)\nRequirement already satisfied: python-dateutil>=2.7 in /environment/miniconda3/lib/python3.7/site-packages (from matplotlib->grad-cam) (2.8.2)\nRequirement already satisfied: fonttools>=4.22.0 in /environment/miniconda3/lib/python3.7/site-packages (from matplotlib->grad-cam) (4.28.3)\nRequirement already satisfied: six>=1.5 in /environment/miniconda3/lib/python3.7/site-packages (from python-dateutil>=2.7->matplotlib->grad-cam) (1.16.0)\nRequirement already satisfied: tomli>=1.0.0 in /environment/miniconda3/lib/python3.7/site-packages (from setuptools-scm>=4->matplotlib->grad-cam) (1.2.2)\nRequirement already satisfied: setuptools in /environment/miniconda3/lib/python3.7/site-packages (from setuptools-scm>=4->matplotlib->grad-cam) (52.0.0.post20210125)\nRequirement already satisfied: scipy>=1.1.0 in /environment/miniconda3/lib/python3.7/site-packages (from scikit-learn->grad-cam) (1.7.3)\nRequirement already satisfied: threadpoolctl>=2.0.0 in /environment/miniconda3/lib/python3.7/site-packages (from scikit-learn->grad-cam) (3.0.0)\nRequirement already satisfied: joblib>=0.11 in /environment/miniconda3/lib/python3.7/site-packages (from scikit-learn->grad-cam) (1.1.0)\nBuilding wheels for collected packages: grad-cam\n  Building wheel for grad-cam (PEP 517) ... \u001b[?25ldone\n\u001b[?25h  Created wheel for grad-cam: filename=grad_cam-1.4.5-py3-none-any.whl size=37008 sha256=ed01b155296ac352311388b54248c98d8ec47aa3c764cc9f502b561632c807fc\n  Stored in directory: /home/featurize/.cache/pip/wheels/ba/ef/51/e07892330ac9c035ab9bc828930763b470859f1415031426b1\nSuccessfully built grad-cam\nInstalling collected packages: ttach, torchcam, grad-cam\nSuccessfully installed grad-cam-1.4.5 torchcam-0.3.2 ttach-0.0.3\n"
+        }
+      ],
+      "execution_count": 1,
+      "metadata": {
+        "pycharm": {
+          "name": "#%%\n"
+        }
+      },
+      "id": "33526466-1db0-4032-a1dc-1cbc5bcb0f21"
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## 下载 pytorch-grad-cam"
+      ],
+      "metadata": {
+        "pycharm": {
+          "name": "#%% md\n"
+        }
+      },
+      "id": "59278d0a-f23a-4110-8b12-00262fd03090"
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!git clone https://github.com/jacobgil/pytorch-grad-cam.git"
+      ],
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": "正克隆到 'pytorch-grad-cam'...\nremote: Enumerating objects: 1057, done.\u001b[K\nremote: Counting objects: 100% (1057/1057), done.\u001b[K\nremote: Compressing objects: 100% (449/449), done.\u001b[K\nremote: Total 1057 (delta 588), reused 1050 (delta 586), pack-reused 0\u001b[K\n接收对象中: 100% (1057/1057), 96.85 MiB | 8.88 MiB/s, 完成.\n处理 delta 中: 100% (588/588), 完成.\n"
+        }
+      ],
+      "execution_count": 14,
+      "metadata": {
+        "pycharm": {
+          "name": "#%%\n"
+        }
+      },
+      "id": "895f1c12-4079-4960-92e2-b307be623989"
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## 创建目录"
+      ],
+      "metadata": {
+        "pycharm": {
+          "name": "#%% md\n"
+        }
+      },
+      "id": "d328b8cf-56e4-423f-b9f0-9293f8087d1e"
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import os"
+      ],
+      "outputs": [],
+      "execution_count": 9,
+      "metadata": {
+        "pycharm": {
+          "name": "#%%\n"
+        },
+        "gather": {
+          "logged": 1674967604281
+        }
+      },
+      "id": "5eeff82a-1a2b-4ce3-b3e9-e0a084d5f7e1"
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 存放测试图片\n",
+        "os.mkdir('test_img')\n",
+        "\n",
+        "# 存放结果文件\n",
+        "os.mkdir('output')\n",
+        "\n",
+        "# 存放模型权重文件\n",
+        "os.mkdir('checkpoint')"
+      ],
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "FileExistsError",
+          "evalue": "[Errno 17] File exists: 'test_img'",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mFileExistsError\u001b[0m                           Traceback (most recent call last)",
+            "Cell \u001b[0;32mIn[10], line 2\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[38;5;66;03m# 存放测试图片\u001b[39;00m\n\u001b[0;32m----> 2\u001b[0m \u001b[43mos\u001b[49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mmkdir\u001b[49m\u001b[43m(\u001b[49m\u001b[38;5;124;43m'\u001b[39;49m\u001b[38;5;124;43mtest_img\u001b[39;49m\u001b[38;5;124;43m'\u001b[39;49m\u001b[43m)\u001b[49m\n\u001b[1;32m      4\u001b[0m \u001b[38;5;66;03m# 存放结果文件\u001b[39;00m\n\u001b[1;32m      5\u001b[0m os\u001b[38;5;241m.\u001b[39mmkdir(\u001b[38;5;124m'\u001b[39m\u001b[38;5;124moutput\u001b[39m\u001b[38;5;124m'\u001b[39m)\n",
+            "\u001b[0;31mFileExistsError\u001b[0m: [Errno 17] File exists: 'test_img'"
+          ]
+        }
+      ],
+      "execution_count": 10,
+      "metadata": {
+        "pycharm": {
+          "name": "#%%\n"
+        },
+        "gather": {
+          "logged": 1674969084413
+        }
+      },
+      "id": "46f77937-5b98-45c9-9205-11cab744e786"
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## 下载动物测试图片至`test_img`目录"
+      ],
+      "metadata": {
+        "pycharm": {
+          "name": "#%% md\n"
+        }
+      },
+      "id": "6ff7549d-530d-42a8-af3d-8573ddc6fa0e"
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!wget https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220919-explain/test_img/puppies.jpg -P test_img\n",
+        "\n",
+        "!wget https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220919-explain/test_img/bear.jpeg -P test_img\n",
+        "\n",
+        "!wget https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220919-explain/test_img/box_tabby.png -P test_img\n",
+        "\n",
+        "# 蛇，来源：https://www.pexels.com/zh-cn/photo/80474/\n",
+        "!wget https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220919-explain/test_img/snake.jpg -P test_img\n",
+        "\n",
+        "# 长颈鹿和斑马，来源：https://www.istockphoto.com/hk/%E7%85%A7%E7%89%87/giraffes-and-zebras-at-waterhole-gm503592172-82598465\n",
+        "!wget https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220919-explain/test_img/giraffe_zebra.jpg -P test_img\n",
+        "\n",
+        "# 大象、狮子、羚羊，来源：https://www.istockphoto.com/hk/%E7%85%A7%E7%89%87/%E5%A4%A7%E8%B1%A1%E5%92%8C%E7%8D%85%E5%AD%90-gm1136053333-30244130\n",
+        "!wget https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220919-explain/test_img/africa.jpg -P test_img\n",
+        "\n",
+        "# 边牧犬，来源：https://www.woopets.fr/assets/races/000/066/big-portrait/border-collie.jpg\n",
+        "!wget https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220716-mmclassification/test/border-collie.jpg -P test_img\n",
+        "\n",
+        "!wget https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220716-mmclassification/test/cat_dog.jpg -P test_img\n"
+      ],
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": "--2023-01-29 04:46:53--  https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220919-explain/test_img/puppies.jpg\nResolving zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 410751 (401K) [image/jpeg]\nSaving to: ‘test_img/puppies.jpg.1’\n\npuppies.jpg.1       100%[===================>] 401.12K   405KB/s    in 1.0s    \n\n2023-01-29 04:46:55 (405 KB/s) - ‘test_img/puppies.jpg.1’ saved [410751/410751]\n\n--2023-01-29 04:46:56--  https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220919-explain/test_img/bear.jpeg\nResolving zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 337749 (330K) [image/jpeg]\nSaving to: ‘test_img/bear.jpeg.1’\n\nbear.jpeg.1         100%[===================>] 329.83K   350KB/s    in 0.9s    \n\n2023-01-29 04:46:58 (350 KB/s) - ‘test_img/bear.jpeg.1’ saved [337749/337749]\n\n--2023-01-29 04:46:58--  https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220919-explain/test_img/box_tabby.png\nResolving zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 90226 (88K) [image/png]\nSaving to: ‘test_img/box_tabby.png.1’\n\nbox_tabby.png.1     100%[===================>]  88.11K   154KB/s    in 0.6s    \n\n2023-01-29 04:47:00 (154 KB/s) - ‘test_img/box_tabby.png.1’ saved [90226/90226]\n\n--2023-01-29 04:47:00--  https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220919-explain/test_img/snake.jpg\nResolving zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 267755 (261K) [image/jpeg]\nSaving to: ‘test_img/snake.jpg.1’\n\nsnake.jpg.1         100%[===================>] 261.48K   294KB/s    in 0.9s    \n\n2023-01-29 04:47:02 (294 KB/s) - ‘test_img/snake.jpg.1’ saved [267755/267755]\n\n--2023-01-29 04:47:02--  https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220919-explain/test_img/giraffe_zebra.jpg\nResolving zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 3960317 (3.8M) [image/jpeg]\nSaving to: ‘test_img/giraffe_zebra.jpg.1’\n\ngiraffe_zebra.jpg.1 100%[===================>]   3.78M  2.18MB/s    in 1.7s    \n\n2023-01-29 04:47:05 (2.18 MB/s) - ‘test_img/giraffe_zebra.jpg.1’ saved [3960317/3960317]\n\n--2023-01-29 04:47:05--  https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220919-explain/test_img/africa.jpg\nResolving zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 12754940 (12M) [image/jpeg]\nSaving to: ‘test_img/africa.jpg.1’\n\nafrica.jpg.1        100%[===================>]  12.16M  5.39MB/s    in 2.3s    \n\n2023-01-29 04:47:09 (5.39 MB/s) - ‘test_img/africa.jpg.1’ saved [12754940/12754940]\n\n--2023-01-29 04:47:09--  https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220716-mmclassification/test/border-collie.jpg\nResolving zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 312888 (306K) [image/jpeg]\nSaving to: ‘test_img/border-collie.jpg.1’\n\nborder-collie.jpg.1 100%[===================>] 305.55K   340KB/s    in 0.9s    \n\n2023-01-29 04:47:11 (340 KB/s) - ‘test_img/border-collie.jpg.1’ saved [312888/312888]\n\n--2023-01-29 04:47:11--  https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220716-mmclassification/test/cat_dog.jpg\nResolving zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 817995 (799K) [image/jpeg]\nSaving to: ‘test_img/cat_dog.jpg.1’\n\ncat_dog.jpg.1       100%[===================>] 798.82K   647KB/s    in 1.2s    \n\n2023-01-29 04:47:14 (647 KB/s) - ‘test_img/cat_dog.jpg.1’ saved [817995/817995]\n\n"
+        }
+      ],
+      "execution_count": 11,
+      "metadata": {
+        "pycharm": {
+          "name": "#%%\n"
+        },
+        "gather": {
+          "logged": 1674967634541
+        }
+      },
+      "id": "9a98df91-87c2-46cd-bd80-0de948907dcd"
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## 下载水果测试图片至`test_img`目录"
+      ],
+      "metadata": {
+        "pycharm": {
+          "name": "#%% md\n"
+        }
+      },
+      "id": "fcfe399f-88db-4541-99d9-61a0f61aa276"
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!wget https://zihao-openmmlab.obs.myhuaweicloud.com/20220716-mmclassification/test/0818/test_fruits.jpg -P test_img\n",
+        "\n",
+        "!wget https://zihao-openmmlab.obs.myhuaweicloud.com/20220716-mmclassification/test/0818/test_orange_2.jpg -P test_img \n",
+        "\n",
+        "!wget https://zihao-openmmlab.obs.myhuaweicloud.com/20220716-mmclassification/test/0818/test_bananan.jpg -P test_img\n",
+        "\n",
+        "!wget https://zihao-openmmlab.obs.myhuaweicloud.com/20220716-mmclassification/test/0818/test_kiwi.jpg -P test_img\n",
+        "\n",
+        "# 草莓图像，来源：https://www.pexels.com/zh-cn/photo/4828489/\n",
+        "!wget https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220716-mmclassification/test/0818/test_草莓.jpg -P test_img\n",
+        "\n",
+        "!wget https://zihao-openmmlab.obs.myhuaweicloud.com/20220716-mmclassification/test/0818/test_石榴.jpg -P test_img\n",
+        "\n",
+        "!wget https://zihao-openmmlab.obs.myhuaweicloud.com/20220716-mmclassification/test/0818/test_orange.jpg -P test_img\n",
+        "\n",
+        "!wget https://zihao-openmmlab.obs.myhuaweicloud.com/20220716-mmclassification/test/0818/test_lemon.jpg -P test_img\n",
+        "\n",
+        "!wget https://zihao-openmmlab.obs.myhuaweicloud.com/20220716-mmclassification/test/0818/test_火龙果.jpg -P test_img\n",
+        "\n",
+        "!wget https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220716-mmclassification/test/watermelon1.jpg -P test_img\n",
+        "\n",
+        "!wget https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220716-mmclassification/test/banana1.jpg -P test_img"
+      ],
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": "--2023-01-29 04:47:14--  https://zihao-openmmlab.obs.myhuaweicloud.com/20220716-mmclassification/test/0818/test_fruits.jpg\nResolving zihao-openmmlab.obs.myhuaweicloud.com (zihao-openmmlab.obs.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.myhuaweicloud.com (zihao-openmmlab.obs.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 2579427 (2.5M) [image/jpeg]\nSaving to: ‘test_img/test_fruits.jpg.1’\n\ntest_fruits.jpg.1   100%[===================>]   2.46M  1.58MB/s    in 1.6s    \n\n2023-01-29 04:47:17 (1.58 MB/s) - ‘test_img/test_fruits.jpg.1’ saved [2579427/2579427]\n\n--2023-01-29 04:47:17--  https://zihao-openmmlab.obs.myhuaweicloud.com/20220716-mmclassification/test/0818/test_orange_2.jpg\nResolving zihao-openmmlab.obs.myhuaweicloud.com (zihao-openmmlab.obs.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.myhuaweicloud.com (zihao-openmmlab.obs.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 1771019 (1.7M) [image/jpeg]\nSaving to: ‘test_img/test_orange_2.jpg.1’\n\ntest_orange_2.jpg.1 100%[===================>]   1.69M  1.15MB/s    in 1.5s    \n\n2023-01-29 04:47:20 (1.15 MB/s) - ‘test_img/test_orange_2.jpg.1’ saved [1771019/1771019]\n\n--2023-01-29 04:47:20--  https://zihao-openmmlab.obs.myhuaweicloud.com/20220716-mmclassification/test/0818/test_bananan.jpg\nResolving zihao-openmmlab.obs.myhuaweicloud.com (zihao-openmmlab.obs.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.myhuaweicloud.com (zihao-openmmlab.obs.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 1116714 (1.1M) [image/jpeg]\nSaving to: ‘test_img/test_bananan.jpg.1’\n\ntest_bananan.jpg.1  100%[===================>]   1.06M   815KB/s    in 1.3s    \n\n2023-01-29 04:47:23 (815 KB/s) - ‘test_img/test_bananan.jpg.1’ saved [1116714/1116714]\n\n--2023-01-29 04:47:23--  https://zihao-openmmlab.obs.myhuaweicloud.com/20220716-mmclassification/test/0818/test_kiwi.jpg\nResolving zihao-openmmlab.obs.myhuaweicloud.com (zihao-openmmlab.obs.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.myhuaweicloud.com (zihao-openmmlab.obs.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 1555297 (1.5M) [image/jpeg]\nSaving to: ‘test_img/test_kiwi.jpg.1’\n\ntest_kiwi.jpg.1     100%[===================>]   1.48M  1.08MB/s    in 1.4s    \n\n2023-01-29 04:47:26 (1.08 MB/s) - ‘test_img/test_kiwi.jpg.1’ saved [1555297/1555297]\n\n--2023-01-29 04:47:26--  https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220716-mmclassification/test/0818/test_%E8%8D%89%E8%8E%93.jpg\nResolving zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 193879 (189K) [image/jpeg]\nSaving to: ‘test_img/test_草莓.jpg.1’\n\ntest_草莓.jpg.1     100%[===================>] 189.33K   234KB/s    in 0.8s    \n\n2023-01-29 04:47:29 (234 KB/s) - ‘test_img/test_草莓.jpg.1’ saved [193879/193879]\n\n--2023-01-29 04:47:29--  https://zihao-openmmlab.obs.myhuaweicloud.com/20220716-mmclassification/test/0818/test_%E7%9F%B3%E6%A6%B4.jpg\nResolving zihao-openmmlab.obs.myhuaweicloud.com (zihao-openmmlab.obs.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.myhuaweicloud.com (zihao-openmmlab.obs.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 1326649 (1.3M) [image/jpeg]\nSaving to: ‘test_img/test_石榴.jpg.1’\n\ntest_石榴.jpg.1     100%[===================>]   1.26M   922KB/s    in 1.4s    \n\n2023-01-29 04:47:32 (922 KB/s) - ‘test_img/test_石榴.jpg.1’ saved [1326649/1326649]\n\n--2023-01-29 04:47:32--  https://zihao-openmmlab.obs.myhuaweicloud.com/20220716-mmclassification/test/0818/test_orange.jpg\nResolving zihao-openmmlab.obs.myhuaweicloud.com (zihao-openmmlab.obs.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.myhuaweicloud.com (zihao-openmmlab.obs.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 1283008 (1.2M) [image/jpeg]\nSaving to: ‘test_img/test_orange.jpg.1’\n\ntest_orange.jpg.1   100%[===================>]   1.22M   942KB/s    in 1.3s    \n\n2023-01-29 04:47:35 (942 KB/s) - ‘test_img/test_orange.jpg.1’ saved [1283008/1283008]\n\n--2023-01-29 04:47:35--  https://zihao-openmmlab.obs.myhuaweicloud.com/20220716-mmclassification/test/0818/test_lemon.jpg\nResolving zihao-openmmlab.obs.myhuaweicloud.com (zihao-openmmlab.obs.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.myhuaweicloud.com (zihao-openmmlab.obs.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 983324 (960K) [image/jpeg]\nSaving to: ‘test_img/test_lemon.jpg.1’\n\ntest_lemon.jpg.1    100%[===================>] 960.28K   746KB/s    in 1.3s    \n\n2023-01-29 04:47:38 (746 KB/s) - ‘test_img/test_lemon.jpg.1’ saved [983324/983324]\n\n--2023-01-29 04:47:38--  https://zihao-openmmlab.obs.myhuaweicloud.com/20220716-mmclassification/test/0818/test_%E7%81%AB%E9%BE%99%E6%9E%9C.jpg\nResolving zihao-openmmlab.obs.myhuaweicloud.com (zihao-openmmlab.obs.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.myhuaweicloud.com (zihao-openmmlab.obs.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 1385692 (1.3M) [image/jpeg]\nSaving to: ‘test_img/test_火龙果.jpg.1’\n\ntest_火龙果.jpg.1   100%[===================>]   1.32M  1.00MB/s    in 1.3s    \n\n2023-01-29 04:47:41 (1.00 MB/s) - ‘test_img/test_火龙果.jpg.1’ saved [1385692/1385692]\n\n--2023-01-29 04:47:41--  https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220716-mmclassification/test/watermelon1.jpg\nResolving zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 429666 (420K) [image/jpeg]\nSaving to: ‘test_img/watermelon1.jpg.1’\n\nwatermelon1.jpg.1   100%[===================>] 419.60K   418KB/s    in 1.0s    \n\n2023-01-29 04:47:43 (418 KB/s) - ‘test_img/watermelon1.jpg.1’ saved [429666/429666]\n\n--2023-01-29 04:47:43--  https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220716-mmclassification/test/banana1.jpg\nResolving zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 463879 (453K) [image/jpeg]\nSaving to: ‘test_img/banana1.jpg.1’\n\nbanana1.jpg.1       100%[===================>] 453.01K   433KB/s    in 1.0s    \n\n2023-01-29 04:47:46 (433 KB/s) - ‘test_img/banana1.jpg.1’ saved [463879/463879]\n\n"
+        }
+      ],
+      "execution_count": 12,
+      "metadata": {
+        "pycharm": {
+          "name": "#%%\n"
+        },
+        "gather": {
+          "logged": 1674967666533
+        }
+      },
+      "id": "94c167d8-4416-4b85-a1e9-22fbd6cdb98e"
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## 下载 ImageNet 1000类别信息"
+      ],
+      "metadata": {
+        "pycharm": {
+          "name": "#%% md\n"
+        }
+      },
+      "id": "7225c9fb-a2d9-4917-a370-2365e2a3df79"
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!wget https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220716-mmclassification/dataset/meta_data/imagenet_class_index.csv\n"
+      ],
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": "--2023-01-29 04:47:46--  https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220716-mmclassification/dataset/meta_data/imagenet_class_index.csv\nResolving zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 37074 (36K) [text/csv]\nSaving to: ‘imagenet_class_index.csv.1’\n\nimagenet_class_inde 100%[===================>]  36.21K   119KB/s    in 0.3s    \n\n2023-01-29 04:47:48 (119 KB/s) - ‘imagenet_class_index.csv.1’ saved [37074/37074]\n\n"
+        }
+      ],
+      "execution_count": 13,
+      "metadata": {
+        "pycharm": {
+          "name": "#%%\n"
+        }
+      },
+      "id": "99dd5d25-feb6-4750-94f2-a12c4aad481a"
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## 自己训练得到的30类水果图像分类模型"
+      ],
+      "metadata": {
+        "pycharm": {
+          "name": "#%% md\n"
+        }
+      },
+      "id": "a8da4bb9-0598-4898-93f7-5d6c0652c7a2"
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 下载样例模型文件\n",
+        "!wget https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220716-mmclassification/checkpoints/fruit30_pytorch_20220814.pth -P checkpoint\n",
+        "\n",
+        "# 下载 类别名称 和 ID索引号 的映射字典\n",
+        "!wget https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220716-mmclassification/dataset/fruit30/labels_to_idx.npy\n",
+        "!wget https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220716-mmclassification/dataset/fruit30/idx_to_labels.npy\n"
+      ],
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": "--2023-01-29 04:47:51--  https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220716-mmclassification/checkpoints/fruit30_pytorch_20220814.pth\nResolving zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 44854477 (43M) [binary/octet-stream]\nSaving to: ‘checkpoint/fruit30_pytorch_20220814.pth.1’\n\nfruit30_pytorch_202 100%[===================>]  42.78M  13.3MB/s    in 4.4s    \n\n2023-01-29 04:47:57 (9.67 MB/s) - ‘checkpoint/fruit30_pytorch_20220814.pth.1’ saved [44854477/44854477]\n\n--2023-01-29 04:47:58--  https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220716-mmclassification/dataset/fruit30/labels_to_idx.npy\nResolving zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 769 [binary/octet-stream]\nSaving to: ‘labels_to_idx.npy.1’\n\nlabels_to_idx.npy.1 100%[===================>]     769  --.-KB/s    in 0s      \n\n2023-01-29 04:47:59 (10.8 MB/s) - ‘labels_to_idx.npy.1’ saved [769/769]\n\n--2023-01-29 04:47:59--  https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220716-mmclassification/dataset/fruit30/idx_to_labels.npy\nResolving zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 769 [binary/octet-stream]\nSaving to: ‘idx_to_labels.npy.1’\n\nidx_to_labels.npy.1 100%[===================>]     769  --.-KB/s    in 0s      \n\n2023-01-29 04:48:00 (27.5 MB/s) - ‘idx_to_labels.npy.1’ saved [769/769]\n\n"
+        }
+      ],
+      "execution_count": 14,
+      "metadata": {
+        "pycharm": {
+          "name": "#%%\n"
+        },
+        "gather": {
+          "logged": 1674967680703
+        }
+      },
+      "id": "4e50e3c8-05da-4abf-bf44-549e629ed41f"
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## 验证安装配置成功"
+      ],
+      "metadata": {
+        "pycharm": {
+          "name": "#%% md\n"
+        }
+      },
+      "id": "f22f7530-b030-46a3-b1ac-ed0f97629e5a"
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pytorch_grad_cam"
+      ],
+      "outputs": [],
+      "execution_count": 2,
+      "metadata": {
+        "pycharm": {
+          "name": "#%%\n"
+        },
+        "gather": {
+          "logged": 1674970888289
+        }
+      },
+      "id": "6bc6bca9-59cf-49d5-98bf-25b156a41ecb"
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "outputs": [],
+      "execution_count": null,
+      "metadata": {
+        "pycharm": {
+          "name": "#%%\n"
+        }
+      },
+      "id": "ff00a4db-9636-412d-af60-6189b6801e5c"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)"
+    },
+    "language_info": {
+      "name": "python",
+      "version": "3.8.5",
+      "mimetype": "text/x-python",
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "pygments_lexer": "ipython3",
+      "nbconvert_exporter": "python",
+      "file_extension": ".py"
+    },
+    "nteract": {
+      "version": "nteract-front-end@1.0.0"
+    },
+    "kernel_info": {
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
