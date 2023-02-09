@@ -14,3 +14,4 @@ torch-cam
 pytorch-grad-cam
 *.mp4
 ISIC
+isic_learn/dataset/
