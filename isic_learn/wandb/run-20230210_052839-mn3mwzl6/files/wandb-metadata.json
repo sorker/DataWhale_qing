@@ -1,0 +1,74 @@
+{
+    "os": "Linux-5.15.0-1031-azure-x86_64-with-glibc2.10",
+    "python": "3.8.5",
+    "heartbeatAt": "2023-02-10T05:28:41.583281",
+    "startedAt": "2023-02-10T05:28:39.949639",
+    "docker": null,
+    "cuda": null,
+    "args": null,
+    "state": "running",
+    "program": "Users/buptst/Train_Custom_Dataset/isic_learn/up_train.ipynb",
+    "root": "/mnt/batch/tasks/shared/LS_root/mounts/clusters/buptst1/code",
+    "git": {
+        "remote": "git@github.com:sorker/DataWhale_qing.git",
+        "commit": null
+    },
+    "email": null,
+    "host": "buptst1",
+    "username": "azureuser",
+    "executable": "/anaconda/envs/jupyter_env/bin/python",
+    "cpu_count": 6,
+    "cpu_count_logical": 6,
+    "cpu_freq": {
+        "current": 2596.9949999999994,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2596.995,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2596.995,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2596.995,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2596.995,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2596.995,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2596.995,
+            "min": 0.0,
+            "max": 0.0
+        }
+    ],
+    "disk": {
+        "total": 118.05400085449219,
+        "used": 57.89097595214844
+    },
+    "gpu": "Tesla M60",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "Tesla M60",
+            "memory_total": 8524136448
+        }
+    ],
+    "memory": {
+        "total": 54.90074920654297
+    }
+}

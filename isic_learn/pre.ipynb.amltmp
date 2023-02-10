@@ -25,7 +25,7 @@
     {
       "cell_type": "code",
       "source": [
-        "!pip install numpy pandas matplotlib seaborn plotly requests tqdm opencv-python pillow wandb tensorboard"
+        "!pip install numpy pandas matplotlib seaborn plotly requests tqdm opencv-python pillow wandb tensorboard scikit-learn mmcv-full"
       ],
       "outputs": [
         {
@@ -131,10 +131,10 @@
         {
           "output_type": "stream",
           "name": "stdout",
-          "text": "--2023-02-09 13:57:37--  https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220716-mmclassification/dataset/SimHei.ttf\nResolving zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 10050868 (9.6M) [application/x-font-ttf]\nSaving to: ‘/anaconda/envs/jupyter_env/lib/python3.8/site-packages/matplotlib/mpl-data/fonts/ttf/SimHei.ttf’\n\n/anaconda/envs/jupy 100%[===================>]   9.58M  1.69MB/s    in 8.4s    \n\n2023-02-09 13:57:49 (1.14 MB/s) - ‘/anaconda/envs/jupyter_env/lib/python3.8/site-packages/matplotlib/mpl-data/fonts/ttf/SimHei.ttf’ saved [10050868/10050868]\n\n"
+          "text": "--2023-02-10 05:27:36--  https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220716-mmclassification/dataset/SimHei.ttf\nResolving zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)... 121.36.235.132\nConnecting to zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com (zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com)|121.36.235.132|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 10050868 (9.6M) [application/x-font-ttf]\nSaving to: ‘/anaconda/envs/jupyter_env/lib/python3.8/site-packages/matplotlib/mpl-data/fonts/ttf/SimHei.ttf’\n\n/anaconda/envs/jupy 100%[===================>]   9.58M  4.13MB/s    in 2.3s    \n\n2023-02-10 05:27:40 (4.13 MB/s) - ‘/anaconda/envs/jupyter_env/lib/python3.8/site-packages/matplotlib/mpl-data/fonts/ttf/SimHei.ttf’ saved [10050868/10050868]\n\n"
         }
       ],
-      "execution_count": 21,
+      "execution_count": 1,
       "metadata": {
         "jupyter": {
           "source_hidden": false,
@@ -146,7 +146,7 @@
           }
         },
         "gather": {
-          "logged": 1675951070811
+          "logged": 1676006864676
         }
       }
     },
@@ -362,7 +362,7 @@
           "name": "#%%\n"
         },
         "gather": {
-          "logged": 1675950941512
+          "logged": 1676008013861
         }
       }
     },
